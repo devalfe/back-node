@@ -116,7 +116,7 @@ export default {
         }
         const inPassword = fields.password;
         const exists = await models.User.findById({ _id: uid });
-        if (inPassword != exists.password) {
+        if (inPassword !== exists.password) {
           const salt = bcrypt.genSaltSync();
           const newPassword = bcrypt.hashSync(password, salt);
           const newData = { name, password: newPassword, email, state, role };
